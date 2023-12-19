@@ -2,7 +2,7 @@ import pygame
 
 
 pygame.init()
-pygame.display.set_caption("Японские сканворды")
+pygame.display.set_caption("Японские кроссворды")
 
 WIDTH = 1000
 HEIGHT = 700
