@@ -30,7 +30,7 @@ class Error:
             pygame.draw.rect(scene, (int(self.r), int(self.g), int(self.b)),
                              (self.x + 2, self.y + 2, self.max_radius, self.max_radius))
 
-            pygame.draw.rect(scene, Square.color_line_outline,
+            pygame.draw.rect(scene, Square.clr_line_outline,
                              (self.x + 2, self.y + 2, self.max_radius, self.max_radius), 2)
 
             self.radius += delta_time * 20
