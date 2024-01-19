@@ -9,7 +9,7 @@ class StartScreen:
         self.enabled = True
         self.alpha = 255
         self.frame = 0
-        self.img_start = pygame.image.load("png/start_window.png")
+        self.img_start = pygame.image.load("foto_png/start_window.png")
 
     def draw(self, scene, delta_time):
         # Скорость смены стартового кадра
