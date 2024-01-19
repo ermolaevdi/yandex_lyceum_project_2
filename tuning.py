@@ -25,7 +25,7 @@ def reset():
     f.write("max_level=0\n")
     f.write(f"error=0\n")
     f.write(f"difficulty=0\n")
-    f.write(f"advice=5\n")
+    f.write(f"advice=2\n")
     f.close()
 
     dataload = loading()
@@ -59,10 +59,19 @@ def save():
 # --------------- НАЧАЛО ИГРЫ ---------------
 
 # Цвет линий для текста
-#####
+TEXT_COLOR = [(150, 190, 150), (150, 190, 50)]
 
 # Подсветка текста
-#####
+TEXT_LIGHT_BAD = "#A73737"
+TEXT_LIGHT_GOOD = "#37A737"
+TEXT_LIGHT_ATTENTION = "#936d36"
+COLOR_WHITE = "#EFEFEF"
+COLOR_GRAY = "#A7A7A7"
+COLOR_DEEP_GRAY = "#373737"
+COLOR_YELLOW = "#FFFF00"
+COLOR_YELLOW_DARK = "#9d933a"
+COLOR_RED = "#FF4747"
+
 
 WIDTH = 1000
 HEIGHT = 700
@@ -89,5 +98,6 @@ advice = None
 
 see_example = None
 
-
 dataload = loading()
+if level is None:
+    reset()
