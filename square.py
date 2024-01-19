@@ -51,3 +51,4 @@ class Square(RedactorSquare):
                             (self.x + self.size - self.size // 4, self.y + self.size // 4),
                             (self.x + self.size // 4, self.y + self.size - self.size // 4),
                             self.size // 5)
+v
