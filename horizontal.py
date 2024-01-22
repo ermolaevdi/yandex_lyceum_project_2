@@ -1,11 +1,12 @@
-from tuning import *
+from vertical import Vertical
 
-from vertcl_maps import Vertical
-from data import Data
+import tuning
+from data_lines import DataLines
 
 
 class Horizontal(Vertical):
-    def __init__(self, maps, x_start, y_start, cell_size, font):
+
+    def __init__(self, maps, start_x, start_y, cell_size, font):
 
         self.data_lines = []
         self.font = font
@@ -25,16 +26,16 @@ class Horizontal(Vertical):
             if cnt > 0:
                 data.append(cnt)
 
-            self.data_lines.append(Data(x_start - cell_size,
-                                        y_start + cell_size * x + (cell_size - 23) // 2,
-                                        cell_size, data, font,
-                                        TEXT_COLOR[x % 2],
-                                        Data.HORIZONTAL))
-
+            self.data_lines.append(DataLines(start_x - cell_size,
+                                             start_y + cell_size * x + (cell_size - 23) // 2,
+                                             cell_size, data,
+                                             font,
+                                             tuning.TEXT_COLOR[x % 2],
+                                             DataLines.HORIZONTAL))
             if len(data) > maps_x:
                 maps_x = len(data)
 
-        self.height = cell_size * maps_x
+        self.height = maps_x * cell_size
 
         # Определяем выражения для вычисления всех "закрытых" чисел
         self.set_expression_digit()
