@@ -4,6 +4,7 @@ from square import Square
 
 
 class Helper:
+
     def __init__(self, field: Square, max_frame, pause=0, r=0, g=0, b=0):
 
         self.enabled = True
@@ -18,24 +19,25 @@ class Helper:
         self.g = g
         self.b = b
 
-    def draw(self, scene, delta_time):
+    def draw(self, scene, deltatime):
         self.current_frame += 1
 
         if self.pause > self.current_frame:
             return False
 
-        if (self.current_frame - self.pause) > self.max_frame:
+        if self.current_frame - self.pause > self.max_frame:
             self.enabled = False
 
         if self.enabled:
-            pygame.draw.rect(scene, (int(self.r), int(self.g), int(self.b)),
+            pygame.draw.rect(scene,
+                             (int(self.r), int(self.g), int(self.b)),
                              (self.x + 2, self.y + 2, self.size, self.size))
-
-            pygame.draw.rect(scene, Square.clr_line_outline,
+            pygame.draw.rect(scene,
+                             Square.color_line_outline,
                              (self.x + 4, self.y + 4, self.size - 4, self.size - 4), 2)
 
-            self.b += delta_time * 5
-            self.g += delta_time * 350
+            self.g += deltatime * 350
+            self.b += deltatime * 5
 
             if self.r > 255:
                 self.r = 0
