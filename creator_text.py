@@ -1,13 +1,15 @@
 import pygame
 
-from tuning import *
+import tuning
 
 
 class CreatorText:
+
     def __init__(self, font):
 
         self.font = font
         self.txt = []
+
         self.txt.append("Японские кроссворды")
         self.txt.append("")
         self.txt.append("Разработка игры и дизайн:")
@@ -20,19 +22,18 @@ class CreatorText:
 
         self.x = 900
 
-    def draw(self, scene: pygame.surface, delta_time):
+    def draw(self, scene: pygame.surface, deltatime):
 
         pygame.draw.rect(scene, (37, 37, 37), (self.x, 150, 1000, 400))
         if self.x > 200:
-            self.x -= 2000 * delta_time
+            self.x -= 2000 * deltatime
 
-        len_txt = len(self.txt)
-        for i in range(len_txt):
+        for i in range(len(self.txt)):
             if i == 0:
-                color = COLOR_YELLOW
-                surftext = self.font.getMediumText(f"AUTH{i}", self.txt[i], color)
+                clr = tuning.COLOR_YELLOW
+                surftext = self.font.getMediumText(f"AUTH{i}", self.txt[i], clr)
             else:
-                color = COLOR_GRAY
-                surftext = self.font.getSmallText(f"AUTH{i}", self.txt[i], color)
+                clr = tuning.COLOR_GRAY
+                surftext = self.font.getSmallText(f"AUTH{i}", self.txt[i], clr)
 
             scene.blit(surftext, (self.x + 40, 220 + 30 * i))
