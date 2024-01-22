@@ -25,17 +25,19 @@ def reset():
     f.write("max_level=0\n")
     f.write(f"error=0\n")
     f.write(f"difficulty=0\n")
-    f.write(f"advice=2\n")
+    f.write(f"advice=1\n")
     f.close()
 
-    dataload = loading()
+    # dataload = loading()
+
     set_data()
 
 # Установка значений
 def set_data():
     global level, max_level, difficulty, error, advice
 
-    #print(dataload)
+    dataload = loading()
+    # print(dataload)
 
     level = int(dataload["level"])
     max_level = int(dataload["max_level"])
@@ -98,6 +100,7 @@ advice = None
 
 see_example = None
 
-dataload = loading()
-if level is None:
-    reset()
+# dataload = loading()
+# if level is None:
+#     reset()
+set_data()
