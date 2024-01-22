@@ -1,22 +1,21 @@
 import pygame
 
-from tuning import *
-
+import tuning
 
 
 class LabelTextCentral:
-    def __init__(self, y, text, id, clr, font, max_frame, size):
+
+    # Если size == 2, то шрифт больше, чем когда size == 1
+    def __init__(self, y, text, id, color, font, max_frame, size):
 
         self.text = text
-
-        # Если size == 2, то шрифт больше, чем когда size == 1
         if size == 2:
-            self.surface_text = font.getBigText(id, text, clr)
+            self.surface_text = font.getBigText(id, text, color)
         elif size == 1:
-            self.surface_text = font.getMediumText(id, text, clr)
+            self.surface_text = font.getMediumText(id, text, color)
 
         self.enabled = True
-        self.x = (WIDTH - self.surface_text.get_width()) // 2
+        self.x = (tuning.WIDTH - self.surface_text.get_width()) // 2
         self.y = y
         self.max_frame = max_frame
         self.increase_alpha = 1024
@@ -38,6 +37,7 @@ class LabelTextCentral:
                 self.alpha = 255
 
             scene.blit(self.surface_text, (self.x, self.y))
+
             self.frame += 1
 
             if self.frame > self.max_frame:
