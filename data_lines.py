@@ -1,7 +1,7 @@
-from cells import Cell
+from cell import Cell
 
 
-class Data:
+class DataLines:
 
     VERTICAL = 0
     HORIZONTAL = 1
@@ -17,27 +17,21 @@ class Data:
 
         self.cells = []
 
-        if type1 == Data.VERTICAL:
+        if type1 == DataLines.VERTICAL:
             for i in range(len(line)):
-                self.cells.append(Cell(line[len(line) - 1 - i],
-                                       self.x,
-                                       self.y - 30 * i,
+                self.cells.append(Cell(line[len(line) - i - 1],
+                                       self.x, self.y - 30 * i,
                                        self.size,
                                        self.font,
                                        self.color))
-
-        elif type1 == Data.HORIZONTAL:
+        elif type1 == DataLines.HORIZONTAL:
             for i in range(len(line)):
-                self.cells.append(Cell(line[len(line) - 1 - i],
+                self.cells.append(Cell(line[len(line) - i - 1],
                                        self.x - max(30 * i, self.size // 1.4 * i) - 7,
                                        self.y,
                                        self.size // 1.4,
                                        self.font,
                                        self.color))
-
-    def press_mouse_1(self, x, y):
-        for i in range(len(self.cells)):
-            self.cells[len(self.cells) - i - 1].press_mouse_1(x, y)
 
     def check_mouse(self, x, y):
         for i in range(len(self.cells)):
@@ -46,3 +40,7 @@ class Data:
     def draw(self, scene):
         for i in range(len(self.cells)):
             self.cells[len(self.cells) - i - 1].draw(scene)
+
+    def press_mouse_1(self, x, y):
+        for i in range(len(self.cells)):
+            self.cells[len(self.cells) - i - 1].press_mouse_1(x, y)
