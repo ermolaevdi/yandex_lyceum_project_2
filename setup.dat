@@ -1,5 +1,5 @@
-level=None
-max_level=None
-error=None
-difficulty=None
-advice=None
+level=0
+max_level=0
+error=0
+difficulty=0
+advice=1

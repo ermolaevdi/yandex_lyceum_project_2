@@ -2,13 +2,14 @@ import pygame
 
 
 BLANK_FIELD = 64
-class RedactorSquare:
 
+class Square:
     color = (100, 100, 100)
-    clr_line = (190, 190, 190)
+    color_line = (190, 190, 190)
     color_fill = (170, 170, 170)
 
     def __init__(self, x, y, size):
+
         self.x = x
         self.y = y
         self.size = size
@@ -16,41 +17,44 @@ class RedactorSquare:
 
     def draw(self, scene: pygame):
         if self.enabled:
-            pygame.draw.rect(scene, RedactorSquare.color_fill,
+            pygame.draw.rect(scene, Square.color_fill,
                              (self.x + 3, self.y + 3, self.size - 6, self.size - 6))
         else:
-            pygame.draw.rect(scene, RedactorSquare.color,
+            pygame.draw.rect(scene, Square.color,
                              (self.x, self.y, self.size, self.size), 1)
 
-        if (((self.x - BLANK_FIELD) / self.size) % 5) == 0:
-            pygame.draw.line(scene, RedactorSquare.clr_line, (self.x, self.y),
-                             (self.x, self.y + self.size), 2)
-        elif (((self.x + self.size - BLANK_FIELD) / self.size) % 5) == 0:
-            pygame.draw.line(scene, RedactorSquare.clr_line, (self.x + self.size, self.y),
+        if ((self.x - BLANK_FIELD) / self.size) % 5 == 0:
+            pygame.draw.line(scene, Square.color_line,
+                             (self.x, self.y), (self.x, self.y + self.size), 2)
+        elif ((self.x + self.size - BLANK_FIELD) / self.size) % 5 == 0:
+            pygame.draw.line(scene, Square.color_line,
+                             (self.x + self.size, self.y),
                              (self.x + self.size, self.y + self.size), 2)
 
-        if (((self.y - BLANK_FIELD) / self.size) % 5) == 0:
-            pygame.draw.line(scene, RedactorSquare.clr_line, (self.x, self.y),
-                             (self.x + self.size, self.y), 2)
-        elif (((self.y + self.size - BLANK_FIELD) / self.size) % 5) == 0:
-            pygame.draw.line(scene, RedactorSquare.clr_line, (self.x, self.y + self.size),
+        if ((self.y - BLANK_FIELD) / self.size) % 5 == 0:
+            pygame.draw.line(scene, Square.color_line,
+                             (self.x, self.y), (self.x + self.size, self.y), 2)
+        elif ((self.y + self.size - BLANK_FIELD) / self.size) % 5 == 0:
+            pygame.draw.line(scene, Square.color_line,
+                             (self.x, self.y + self.size),
                              (self.x + self.size, self.y + self.size), 2)
 
-    def drawIJ(self, scene: pygame, a, b):
+    def drawIJ(self, scene: pygame, i, j):
         if self.enabled:
-            pygame.draw.rect(scene, RedactorSquare.color_fill, (a + 3, b + 3, self.size - 6, self.size - 6))
+            pygame.draw.rect(scene, Square.color_fill, (i + 3, j + 3, self.size - 6, self.size - 6))
         else:
-            pygame.draw.rect(scene, RedactorSquare.color, (a, b, self.size, self.size), 1)
+            pygame.draw.rect(scene, Square.color, (i, j, self.size, self.size), 1)
 
-        if (((a - BLANK_FIELD) / self.size) % 5) == 0:
-            pygame.draw.line(scene, RedactorSquare.clr_line, (a, b), (a, b + self.size), 2)
-        elif (((a + self.size - BLANK_FIELD) / self.size) % 5) == 0:
-            pygame.draw.line(scene, RedactorSquare.clr_line, (a + self.size, b),
-                             (a + self.size, b + self.size), 2)
+        if ((i - BLANK_FIELD) / self.size) % 5 == 0:
+            pygame.draw.line(scene, Square.color_line,
+                             (i, j), (i, j + self.size), 2)
+        elif ((i + self.size - BLANK_FIELD) / self.size) % 5 == 0:
+            pygame.draw.line(scene, Square.color_line,
+                             (i + self.size, j), (i + self.size, j + self.size), 2)
 
-        if (((b - BLANK_FIELD) / self.size) % 5) == 0:
-            pygame.draw.line(scene, RedactorSquare.clr_line, (a, b),
-                             (a + self.size, b), 2)
-        elif (((b + self.size - BLANK_FIELD) / self.size) % 5) == 0:
-            pygame.draw.line(scene, RedactorSquare.clr_line, (a, b + self.size),
-                             (a + self.size, b + self.size), 2)
+        if ((j - BLANK_FIELD) / self.size) % 5 == 0:
+            pygame.draw.line(scene, Square.color_line,
+                             (i, j), (i + self.size, j), 2)
+        elif ((j + self.size - BLANK_FIELD) / self.size) % 5 == 0:
+            pygame.draw.line(scene, Square.color_line,
+                             (i, j + self.size), (i + self.size, j + self.size), 2)
