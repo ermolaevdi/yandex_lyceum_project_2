@@ -1,13 +1,15 @@
 import pygame
 
-from tuning import *
+import tuning
 
 
-class RulesText:
+class PlayTxt:
 
     def __init__(self, font):
+
         self.font = font
         self.txt = []
+
         self.txt.append("Правила игры")
         self.txt.append("")
         self.txt.append("Изображения в игре закодированы числами/примерами, расположенными слева от строк, а также"
@@ -31,13 +33,12 @@ class RulesText:
         if self.x > 200:
             self.x -= 2000 * deltatime
 
-        len_txt = len(self.txt)
-        for i in range(len_txt):
+        for i in range(len(self.txt)):
             if i == 0:
-                color = COLOR_YELLOW
-                txt = self.font.getMediumText(f"PL{i}", self.txt[i], color)
+                clr = tuning.COLOR_YELLOW
+                txt = self.font.getMediumText(f"PL{i}", self.txt[i], clr)
             else:
-                color = COLOR_GRAY
-                txt = self.font.getSmallText(f"PL{i}", self.txt[i], color)
+                clr = tuning.COLOR_GRAY
+                txt = self.font.getSmallText(f"PL{i}", self.txt[i], clr)
 
             scene.blit(txt, (self.x + 30, 220 + 30 * i))
