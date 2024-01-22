@@ -2,10 +2,11 @@ import pygame
 
 
 class FinalText:
-    def __init__(self, message_1, message_2, name_image, font, left_x, right_x):
 
-        self.message_1 = font.getBigText("MSG1", message_1, "#dd9587")
-        self.message_2 = font.getSmallText("MSG2", message_2, "#AAAA99")
+    def __init__(self, msg1, msg2, name_image, font, left_x, right_x):
+
+        self.message_1 = font.getBigText("MSG1", msg1, "#dd9587")
+        self.message_2 = font.getSmallText("MSG2", msg2, "#AAAA99")
 
         self.message_1x = (right_x - left_x - self.message_1.get_width()) // 2
         self.message_2x = (right_x - left_x - self.message_2.get_width()) // 2
